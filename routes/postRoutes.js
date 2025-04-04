@@ -8,8 +8,7 @@ router.post('/createPost',  async (req, res) => {
     const { title, content } = req.body;
     const newPost = new Post({
       title,
-      content,
-      userId: req.user.id
+      content
     });
     const savedPost = await newPost.save();
     res.status(201).json(savedPost);
