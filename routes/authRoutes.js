@@ -99,12 +99,15 @@ router.post("/login", async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 3600000,
-    });
+    
+    res
+  .cookie('token', jwtToken, {
+    httpOnly: true,
+    secure: true, 
+    sameSite: 'None', 
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  })
+  .json({ message: 'Login successful' });
 
     return res
       .status(200)
