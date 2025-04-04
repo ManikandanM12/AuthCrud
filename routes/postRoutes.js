@@ -3,7 +3,7 @@ const Post = require('../models/Posts');
 const { isLoggedIn } = require("../controller/authController.js");
 
 // Create a new post
-router.post('/createPost', isLoggedIn, async (req, res) => {
+router.post('/createPost',  async (req, res) => {
   try {
     const { title, content } = req.body;
     const newPost = new Post({
