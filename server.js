@@ -10,9 +10,12 @@ const authRoutes = require("./routes/authRoutes");
 const PORT = 5000;
 
 app.use(express.json());
-app.use(
-  cors()
-);
+const allowedOrigins = ['https://starlit-caramel-96a306.netlify.app'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: false }));
